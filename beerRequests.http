@@ -1,0 +1,48 @@
+### Get List of Beers
+GET http://localhost:8080/api/v1/beer
+
+### Get Beer by Id
+GET http://localhost:8080/api/v1/beer/2dba75f3-c9b4-4597-be86-47c4d496177e
+
+
+### Post Beer object
+POST http://localhost:8080/api/v1/beer
+Content-Type: application/json
+
+{
+  "id": "19d43dc2-8f44-468b-a70e-d66e253ddadd",
+  "version": 55,
+  "beerName": "Maloof Mango",
+  "beerStyle": "IPA",
+  "upc": "999888",
+  "quantityOnHand": 150,
+  "price": 145.99,
+  "createdDate": "2024-03-07T16:15:43.648824",
+  "updateDate": "2024-03-07T16:15:43.648825"
+}
+
+### Update Beer Object
+PUT http://localhost:8080/api/v1/beer/f8ab3c8d-5432-4021-83a4-bc80474d203d
+Content-Type: application/json
+
+{
+  "beerName": "Beer Africaan",
+  "beerStyle": "PALE_ALE",
+  "upc": "99999",
+  "quantityOnHand": 205,
+  "price": 95.88
+}
+
+
+### Delete beer by Id
+DELETE http://localhost:8080/api/v1/beer/2dba75f3-c9b4-4597-be86-47c4d496177e
+
+
+### Patch by Id
+PATCH http://localhost:8080/api/v1/beer/f43bc4d7-51c7-43af-8bc4-3cc71c704e84
+Content-Type: application/json
+
+{
+  "upc": "222222",
+  "quantityOnHand": 300
+}
