@@ -33,7 +33,3 @@ build/
 .vscode/
 
 
-### Proj Folder ###
- .mvn/
- mvnw
- mvnw.cmd
