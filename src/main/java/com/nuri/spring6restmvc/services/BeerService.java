@@ -1,19 +1,20 @@
 package com.nuri.spring6restmvc.services;
 
-import com.nuri.spring6restmvc.model.Beer;
+import com.nuri.spring6restmvc.model.BeerDTO;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface BeerService {
 
-    void updateBeerById(UUID beerId, Beer beer);
+    void updateBeerById(UUID beerId, BeerDTO beer);
 
-    List<Beer> listBeers();
+    List<BeerDTO> listBeers();
 
-    Beer getBeerById(UUID id);
+    Optional<BeerDTO> getBeerById(UUID id);
 
-    Beer saveNewBeer(Beer beer);
+    BeerDTO saveNewBeer(BeerDTO beer);
 
     void deleteById(UUID beerId);
 
@@ -24,5 +25,5 @@ public interface BeerService {
      * @param beer, beer object used to update existing object.
      *
      */
-    void patchBeerById(UUID beerId, Beer beer);
+    void patchBeerById(UUID beerId, BeerDTO beer);
 }
