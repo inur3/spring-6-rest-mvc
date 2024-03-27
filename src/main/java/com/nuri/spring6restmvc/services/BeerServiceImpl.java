@@ -3,6 +3,8 @@ package com.nuri.spring6restmvc.services;
 import com.nuri.spring6restmvc.model.BeerDTO;
 import com.nuri.spring6restmvc.model.BeerStyle;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -62,7 +64,7 @@ public class BeerServiceImpl implements BeerService {
 
 
     @Override
-    public void patchBeerById(UUID beerId, BeerDTO beer) {
+    public Optional<BeerDTO> patchBeerById(UUID beerId, BeerDTO beer) {
         BeerDTO existing = beerMap.get(beerId);
 
         if(StringUtils.hasText(beer.getBeerName())) {
@@ -84,29 +86,30 @@ public class BeerServiceImpl implements BeerService {
             existing.setUpc(beer.getUpc());
         }
 
+        return Optional.of(existing);
     }
 
     @Override
-    public void deleteById(UUID beerId) {
+    public Boolean deleteById(UUID beerId) {
         beerMap.remove(beerId);
+        return true;
     }
 
     @Override
-    public void updateBeerById(UUID beerId, BeerDTO beer) {
+    public Optional<BeerDTO> updateBeerById(UUID beerId, BeerDTO beer) {
 
         BeerDTO existing = beerMap.get(beerId);
         existing.setBeerName(beer.getBeerName());
         existing.setPrice(beer.getPrice());
         existing.setUpc(beer.getUpc());
         existing.setQuantityOnHand(beer.getQuantityOnHand());
-
-        beerMap.put(existing.getId(), existing);
-
+        return Optional.of(existing);
     }
 
     @Override
-    public List<BeerDTO> listBeers() {
-        return new ArrayList<>(beerMap.values());
+    public Page<BeerDTO> listBeers(String beerName, BeerStyle beerStyle, Boolean showInventory, Integer pageNumber, Integer pageSize) {
+        Page<BeerDTO> retVal = new PageImpl<>(new ArrayList<>(beerMap.values()));
+        return retVal;
     }
 
     @Override

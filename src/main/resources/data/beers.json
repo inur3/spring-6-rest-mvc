@@ -1,0 +1,48 @@
+[
+{
+  "beerName": "Sunshine City",
+  "beerStyle": "IPA",
+  "upc": "12356",
+  "quantityOnHand": 144,
+  "price": 13.99,
+  "createdDate": "2024-03-12T16:41:26.499515",
+  "updateDate": "2024-03-12T16:41:26.49952"
+},
+{
+"beerName": "Galaxy Cat",
+"beerStyle": "PALE_ALE",
+"upc": "12356",
+"quantityOnHand": 122,
+"price": 12.99,
+"createdDate": "2024-03-12T16:41:26.499478",
+"updateDate": "2024-03-12T16:41:26.499489"
+},
+{
+"beerName": "Crank",
+"beerStyle": "PALE_ALE",
+"upc": "12356222",
+"quantityOnHand": 392,
+"price": 11.99,
+"createdDate": "2024-03-12T16:41:26.499502",
+"updateDate": "2024-03-12T16:41:26.499504"
+},
+  {
+    "beerName": "Big Bro DaDon",
+    "beerStyle": "WHEAT",
+    "upc": "12356000",
+    "quantityOnHand": 54,
+    "price": 10.28,
+    "createdDate": "2024-03-12T16:41:26.499502",
+    "updateDate": "2024-03-12T16:41:26.499504"
+  },
+
+  {
+    "beerName": "Demarcus",
+    "beerStyle": "PORTER",
+    "upc": "00226222",
+    "quantityOnHand": 85,
+    "price": 5.79,
+    "createdDate": "2024-03-12T16:41:26.499502",
+    "updateDate": "2024-03-12T16:41:26.499504"
+  }
+]

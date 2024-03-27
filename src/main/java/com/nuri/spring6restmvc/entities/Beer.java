@@ -1,13 +1,18 @@
 package com.nuri.spring6restmvc.entities;
 
 import com.nuri.spring6restmvc.model.BeerStyle;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Version;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.annotations.*;
+import org.hibernate.type.SqlTypes;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -18,16 +23,61 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Beer {
     @Id
+    @UuidGenerator
+    @JdbcTypeCode(SqlTypes.CHAR)
+    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID id;
 
     @Version
     private Integer version;
 
+    // good practice to add bean layer validation that matches database layer constraints.
+    // the bean layer validation is checked first, which is more efficient than having the
+    // error (invalid data) travelling upto the database layer.
+    @NotNull
+    @NotBlank
+    @Size(max = 50)
+    @Column(length = 50)
     private String beerName;
+
+    @NotNull
+    @Column(columnDefinition = "smallint")
     private BeerStyle beerStyle;
+
+    @NotNull
+    @NotBlank
+    @Size(max = 255)
     private String upc;
     private Integer quantityOnHand;
+
+    @NotNull
     private BigDecimal price;
+
+    @OneToMany(mappedBy = "beer")
+    private Set<BeerOrderLine> beerOrderLines;
+
+    @CreationTimestamp // use this to let hibernate add the creation timestamp
     private LocalDateTime createdDate;
+
+    @UpdateTimestamp // let hibernate handle the update time stamp for updateDate
     private LocalDateTime updateDate;
+
+    @Builder.Default
+    @ManyToMany
+    @JoinTable( name = "beer_category",joinColumns = @JoinColumn(name = "beer_id"),
+    inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories = new HashSet<>();
+
+    public void addCategory(Category category) {
+        this.categories.add(category);
+        category.getBeers().add(this);
+    }
+
+    public void removeCategory(Category category) {
+        this.categories.remove(category);
+        category.getBeers().remove(this);
+
+    }
+
+
 }

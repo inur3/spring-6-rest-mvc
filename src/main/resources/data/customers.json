@@ -1,0 +1,32 @@
+[
+  {
+    "customerName": "Customer Uno",
+    "createdDate": "2024-03-12T16:41:26.500965",
+    "updateDate": "2024-03-12T16:41:26.500966"
+  },
+  {
+    "customerName": "BamBaam Dameer",
+    "createdDate": "2024-03-12T16:41:26.500956",
+    "updateDate": "2024-03-12T16:41:26.500957"
+  },
+  {
+    "customerName": "Babaloo Johnson",
+    "createdDate": "2024-03-12T16:41:26.500939",
+    "updateDate": "2024-03-12T16:41:26.500944"
+  },
+  {
+    "customerName": "Maroodi Wayne",
+    "createdDate": "2024-03-12T16:41:26.500939",
+    "updateDate": "2024-03-12T16:41:26.500944"
+  },
+  {
+    "customerName": "Xayawaan Waaxid",
+    "createdDate": "2024-03-12T16:41:26.500939",
+    "updateDate": "2024-03-12T16:41:26.500944"
+  },
+  {
+    "customerName": "Juba Land",
+    "createdDate": "2024-03-12T16:41:26.500939",
+    "updateDate": "2024-03-12T16:41:26.500944"
+  }
+]

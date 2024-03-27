@@ -54,13 +54,16 @@ class CustomerControllerTest {
     }
 
     @Test
-    void testPathCustomerById() throws Exception {
+    void testPatchCustomerById() throws Exception {
         CustomerDTO customer = customerServiceImpl.listCustomers().get(0);
 
         // let's only patch the customerName property. Can use map for that
 
         Map<String, Object> mapCustomer = new HashMap<>();
         mapCustomer.put("customerName", "New Customer Yo!");
+
+        given(customerService.patchById(any(), any())).willReturn(Optional.of(customer));
+
 
         // perform mock patch with Mock MVC
         mockMvc.perform(patch(CustomerController.CUSTOMER_PATH_ID, customer.getId())
@@ -79,6 +82,7 @@ class CustomerControllerTest {
     void testDeleteCustomerById() throws Exception {
         CustomerDTO customer = customerServiceImpl.listCustomers().get(0);
 
+        given(customerService.deleteById(any())).willReturn(true);
         mockMvc.perform(delete(CustomerController.CUSTOMER_PATH_ID, customer.getId())
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent());
@@ -93,6 +97,7 @@ class CustomerControllerTest {
     void testUpdateCustomerById() throws Exception {
         CustomerDTO testCustomer = customerServiceImpl.listCustomers().get(0);
 
+        given(customerService.updateCustomerById(any(), any())).willReturn(Optional.of(testCustomer));
         // perform mock request, and verify that the update method was called
         mockMvc.perform(put(CustomerController.CUSTOMER_PATH_ID, testCustomer.getId())
                 .accept(MediaType.APPLICATION_JSON)

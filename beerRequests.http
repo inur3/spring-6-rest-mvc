@@ -22,15 +22,15 @@ Content-Type: application/json
 }
 
 ### Update Beer Object
-PUT http://localhost:8080/api/v1/beer/f8ab3c8d-5432-4021-83a4-bc80474d203d
+PUT http://localhost:8080/api/v1/beer/000808d8-8c3b-47bf-b867-e0228b42f48e
 Content-Type: application/json
 
 {
-  "beerName": "Beer Africaan",
+  "beerName": "MAROODI BUURAAAAN HEEEY!",
   "beerStyle": "PALE_ALE",
   "upc": "99999",
-  "quantityOnHand": 205,
-  "price": 95.88
+  "quantityOnHand": 2,
+  "price": 100.13
 }
 
 
